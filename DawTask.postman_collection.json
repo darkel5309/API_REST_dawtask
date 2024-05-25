@@ -1,0 +1,333 @@
+{
+	"info": {
+		"_postman_id": "cd1589f4-db65-4438-8e68-f525bfd2b388",
+		"name": "DawTask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35176732"
+	},
+	"item": [
+		{
+			"name": "TareaController",
+			"item": [
+				{
+					"name": "Find tasks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/dawtask/tareas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dawtask",
+								"tareas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/dawtask/tareas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dawtask",
+								"tareas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"titulo\": \"Gasolina\",\r\n        \"descripcion\": \"Ir a echar gasolina al coche\",\r\n        \"fechaVencimiento\": \"2024-05-24\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/dawtask/tareas",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dawtask",
+								"tareas"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Modify by ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/dawtask/tareas/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dawtask",
+								"tareas",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/dawtask/tareas/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dawtask",
+								"tareas",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find tasks \"PENDIENTE\"",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/dawtask/tareas/estado?estado=PENDIENTE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dawtask",
+								"tareas",
+								"estado"
+							],
+							"query": [
+								{
+									"key": "estado",
+									"value": "PENDIENTE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find tasks \"EN_PROCESO\"",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/dawtask/tareas/estado?estado=EN_PROCESO",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dawtask",
+								"tareas",
+								"estado"
+							],
+							"query": [
+								{
+									"key": "estado",
+									"value": "EN_PROCESO"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find tasks \"COMPLETADA\"",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/dawtask/tareas/estado?estado=COMPLETADA",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dawtask",
+								"tareas",
+								"estado"
+							],
+							"query": [
+								{
+									"key": "estado",
+									"value": "COMPLETADA"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find tasks \"VENCIDA\"",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/dawtask/tareas/estaVencida",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dawtask",
+								"tareas",
+								"estaVencida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find tasks \"NO_VENCIDA\"",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/dawtask/tareas/noEstaVencida",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dawtask",
+								"tareas",
+								"noEstaVencida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find tasks by titulo with LIKE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/dawtask/tareas/titulo?titulo=Hacer el proyecto de programación",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dawtask",
+								"tareas",
+								"titulo"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "Hacer el proyecto de programación"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find tasks by titulo with %",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/dawtask/tareas/titulo2?titulo=Recoger la casa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dawtask",
+								"tareas",
+								"titulo2"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "Recoger la casa"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  db:
+    image: mariadb:10.3
+    environment:
+      MYSQL_ROOT_PASSWORD: secreta
+      MYSQL_DATABASE: daw-task
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: secreta
+    ports:
+      - "3307:3306"
+    volumes:
+      - dbdata:/var/lib/mysql/data
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+      MYSQL_ROOT_PASSWORD: secreta
+    restart: always
+    ports:
+      - 8091:80
+    depends_on:
+      - db
+volumes:
+  dbdata:
+  
